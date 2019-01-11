@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_height="fill_parent" android:layout_width="fill_parent" android:background="@color/CurrentPlayerBack" android:id="@+id/matchFrameLayout" android:clipChildren="true" android:minHeight="460dip" android:minWidth="300dip">
+<!-- 
+<com.tsop.android.utils.TouchImageView android:id="@+id/imgLarge" android:layout_marginLeft="10dip" android:layout_marginRight="10dip" android:layout_marginTop="10dip" android:src="@drawable/image_1" android:layout_gravity="top|center_vertical" android:layout_height="fill_parent" android:layout_width="fill_parent" android:visibility="visible" android:layout_marginBottom="75dip" android:adjustViewBounds="true" android:scaleType="fitXY"></com.tsop.android.utils.TouchImageView> 
+-->
+<!-- 
+<ImageView android:id="@+id/imgLarge" android:layout_marginLeft="10dip" android:layout_marginRight="10dip" android:layout_marginTop="10dip" android:src="@drawable/image_1" android:layout_gravity="top|center_vertical" android:layout_height="fill_parent" android:layout_width="fill_parent" android:visibility="visible" android:layout_marginBottom="75dip" android:adjustViewBounds="true" android:scaleType="fitXY"></ImageView>
+-->
+  <!-- 
+  <TextView android:id="@+id/txtDescription" android:textColor="@color/CurrentPlayerText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dip" android:layout_marginRight="5dip" android:layout_gravity="bottom|fill_horizontal"></TextView>
+  -->
+</FrameLayout>

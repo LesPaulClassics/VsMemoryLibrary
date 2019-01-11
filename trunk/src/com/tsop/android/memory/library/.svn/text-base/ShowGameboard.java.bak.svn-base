@@ -1,0 +1,322 @@
+package com.tsop.android.memory;
+
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+import com.tsop.android.memory.R;
+import com.tsop.android.memory.R.layout;
+import com.tsop.games.memory.Card;
+import com.tsop.games.memory.GameBoard;
+import com.tsop.games.memory.GameType;
+import com.tsop.games.memory.IGameBoardDisplay;
+import com.tsop.games.memory.Match;
+import com.tsop.games.memory.MemoryGame;
+import com.tsop.games.memory.Position;
+import com.tsop.games.memory.StatusMonitor;
+
+import android.app.Activity;
+import android.graphics.Point;
+import android.os.Bundle;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView.ScaleType;
+
+public class ShowGameboard extends Activity implements IGameBoardDisplay
+{
+	private ImageButton[][] cards;
+	private Menu mnuOptions;
+
+//	private GameBoard gameBoard;
+	private MemoryGame theGame;
+	private int m_moveTimerCount; // count to make sure at least 10 .1sec intervals have occurred since last timer action
+	private Timer moveTimer;
+	private Timer statusTimer;
+	private StatusMonitor statMon;
+
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.gameboard);
+        
+        theGame = new MemoryGame(this);
+		statMon = new StatusMonitor(this, theGame);
+		moveTimer = new Timer();
+		statusTimer = new Timer();
+        CreateCardImages();
+        InitGame();
+    }
+    
+    public boolean onCreateOptionsMenu(Menu menu) {    
+    	MenuInflater inflater = getMenuInflater();    
+    	inflater.inflate(R.menu.options_menu, menu);    
+    	mnuOptions = menu;
+
+    	return true;
+	}
+    
+    protected void CreateCardImages()
+    {
+    	int screenWidth = getResources().getDisplayMetrics().widthPixels;
+    	int screenHeight = getResources().getDisplayMetrics().heightPixels;
+    	int spacing = scalePixels(2);
+    	int cardWidth = scalePixels((int)((screenWidth - ((GameBoard.NUM_COLUMNS + 1) * spacing)) / GameBoard.NUM_COLUMNS));
+    	int cardHeight = cardWidth;
+    	cards = new ImageButton[GameBoard.NUM_COLUMNS][GameBoard.NUM_ROWS];
+		for (int c = 0; c < GameBoard.NUM_COLUMNS; c++)
+		{
+	    	for (int r = 0; r < GameBoard.NUM_ROWS; r++)
+	    	{
+    			cards[c][r] = new ImageButton(getApplicationContext());
+    			LayoutParams lp = new LayoutParams(51,51);
+    			lp.gravity = Gravity.LEFT & Gravity.TOP;
+    			lp.width = scalePixels(cardWidth);
+    			lp.height = scalePixels(cardHeight);
+    			
+    			// TODO need to do my own scaling here
+    			lp.topMargin = scalePixels(30 + ((cardWidth+spacing) * r));
+    			lp.leftMargin = scalePixels(2 + (53 * c));
+    			cards[c][r].setBackgroundDrawable(null);
+    			cards[c][r].setLayoutParams(lp);
+    			cards[c][r].setImageResource(R.drawable.back);
+    			cards[c][r].setAdjustViewBounds(true);
+    			cards[c][r].setScaleType(ScaleType.FIT_XY);
+    			cards[c][r].setPadding(0,0,0,0);
+    			cards[c][r].setClickable(true);
+    			cards[c][r].setOnClickListener(CardClickListener);
+    			cards[c][r].setTag(new Position(c,r));
+    			
+
+    	    	((FrameLayout)findViewById(R.id.gameFrameLayout)).addView(cards[c][r]);
+    			
+    		}
+    	}
+    }
+    
+    private void InitGame()
+    {
+//    	gameBoard = new GameBoard(this);
+    	theGame.getGameBoard().Shuffle();
+		m_moveTimerCount = 0;
+		setCardDrawables(theGame.getGameBoard().getCardArray());
+    }
+    
+    private void setCardDrawables(Card[][] cards)
+    {
+        try
+        {
+	        Class res = Class.forName("com.tsop.android.memory.R");
+	        Class[] subClasses = res.getDeclaredClasses();  
+	        Class draw = null;  
+	        for (Class subclass : subClasses) {  
+	     	   if ("com.tsop.android.memory.R.drawable".equals(subclass.getCanonicalName())) {  
+	     		   draw = subclass;  
+	     		   break;
+	     	   }
+	        }
+
+	        for (int i=0; i < cards.length; i++)
+	    		for (int j=0; j < cards[i].length; j++)
+	    		{ //todo: find out why it's got a value of "card_26"
+	    			Card card = cards[i][j];
+	    			short value = card.getCardValue();
+		            String resString = "card_" + Short.toString(value);
+		            int id = (int) draw.getField(resString).getInt(draw);
+		            System.out.println(resString + " = " + id);
+		            card.setPosition(i,j);
+		            card.setDrawableId(id);
+
+	    		}
+	  
+        }
+        catch (Exception ex)
+        {
+     	   System.out.println("setCardDrawables(): " + ex.getMessage());
+        }
+    }
+    
+    private int scalePixels(int dips)
+    {
+    	final float scale = getApplicationContext().getResources().getDisplayMetrics().density;
+    	return (int)(dips / scale);
+    }
+
+	@Override
+	public void DrawGameBoard(Card[][] cardArray) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	
+
+	@Override
+	public void UpdateGameBoard(int col, int row) {
+
+		// TODO this must be called from the main UI thread!!!!????
+		Card card= theGame.getGameBoard().getCardArray()[col][row];
+		if (card.getFlipped())
+		{
+			System.out.println("setting Image Resource to " + card.getDrawableId() + " on " + Integer.toString(col) + " " + Integer.toString(row) + ", VALUE = " + card.getCardValue());
+			cards[col][row].setImageResource(card.getDrawableId());
+		}
+		else
+		{
+			System.out.println("setting Image Resource to .back " + R.drawable.back + " on " + Integer.toString(col) + " " + Integer.toString(row) + ", VALUE = " + card.getCardValue());
+			cards[col][row].setImageResource(R.drawable.back);
+		}
+		
+		
+	}
+	
+   private void Exit()
+   {
+//	    soundPool.release();
+		int pid = android.os.Process.myPid(); 
+		android.os.Process.killProcess(pid);
+   }
+
+   /* Handles item selections */
+   public boolean onOptionsItemSelected(MenuItem item) {    
+	   switch (item.getItemId()) {    
+   		case R.id.Exit:
+   			Exit();
+   			return true;
+   		case R.id.Start:
+   			StartGame(GameType.OnePlayerVersusComputer);
+   			return true;
+		}    
+	   return false;
+   }
+	   
+   private View.OnClickListener CardClickListener = new View.OnClickListener() {
+	   public void onClick(View arg0) {
+			if (theGame.getWhoseTurn() == null || theGame.getWhoseTurn().AcceptInput() == false // don't allow mouse clicking unless a user is the current player
+					|| (theGame.getLastTwoMoves().location1.column != -1))							// or the cards haven't been flipped yet
+					return;
+					
+			Position pos = (Position) arg0.getTag();
+			int row = pos.row;
+			int column = pos.column;
+			
+			if (column != -1 && row != -1)
+			{
+				// report the move to the game engine
+				System.out.println("OnClick- RecordMove()");
+				theGame.RecordMove(pos);
+				
+				//flip the card
+//				Card card = gameBoard.getCardArray()[column][row];
+//				cards[column][row].setImageResource(card.getDrawableId());			
+			}
+			m_moveTimerCount = 0;
+		}
+	};
+	
+	/// Method that starts a new game
+	private void StartGame(GameType type)
+	{
+		// initialize a new set of game variables
+		theGame.StartGame(type);
+
+		// enable or disable the cheat button
+		// todo: do I want this?
+//		if (theGame.getPlayerArray()[1] != null && !theGame.getPlayerArray()[1].AcceptInput())
+//			this.cheatButton.Enabled = true;
+//		else
+//			this.cheatButton.Enabled = false;
+		
+		// start the move and status timers ticking
+//		moveTimer.Start();
+		try
+		{
+			TimerTick test = new TimerTick();
+			moveTimer.scheduleAtFixedRate(test, 100, 100);	// TODO ???
+		}
+		catch (Exception ex)
+		{
+			System.out.println(ex.getMessage());
+		}
+		statMon.Reset();
+
+	}
+	
+	
+	private class TimerTick extends TimerTask
+	{
+		private int m_delayTime = 8;
+		private ReentrantLock lockObject = new ReentrantLock();
+	/// <summary>
+	/// Event Handler that processes the move timer tick
+	/// </summary>
+		public void run()
+		{
+			if (lockObject.isLocked())
+				return;
+			
+			lockObject.lock();
+			try
+			{
+				// stop the game when its over
+				// TODO: bug? this only goes to 36, never reaches 48
+				if (theGame.getGameBoard().getCardsTurnedOver() >= GameBoard.TOTAL_CARDS)
+				{
+					moveTimer.cancel();	// TODO ???
+					theGame.setGameOver(true);
+					return;
+				}
+		
+				// check if enough time has passed since last action
+				if (m_moveTimerCount < m_delayTime)
+				{
+					m_moveTimerCount++;
+					return;
+				}
+		
+				// check if any cards need flipping
+				if (theGame.getLastTwoMoves().location1.column != -1)
+				{
+					Match temp = theGame.getLastTwoMoves();
+					System.out.println("TimerTick- TurnOverCard()");
+					theGame.getGameBoard().TurnOverCard(temp.location1.column, temp.location1.row, false);
+					theGame.getGameBoard().TurnOverCard(temp.location2.column, temp.location2.row, false);
+					theGame.setLastTwoMoves(new Match(new Position(-1, -1), new Position(-1, -1), false));
+					m_moveTimerCount = 0;
+					return;
+				}
+		
+				// if it is the user's turn, just exit
+				if (theGame.getWhoseTurn() == null || theGame.getWhoseTurn().AcceptInput() == true)	
+				{
+					m_moveTimerCount = 0;
+					return;
+				}
+		
+				System.out.println("TimerTick - RecordMove()");
+				theGame.RecordMove(theGame.getWhoseTurn().GetMove());
+		
+				m_moveTimerCount = 0;
+
+			}
+			catch (Exception ex)
+			{
+				System.out.println(ex.getMessage());
+			}
+			finally
+			{
+				lockObject.unlock();
+			}
+		}
+	}
+}

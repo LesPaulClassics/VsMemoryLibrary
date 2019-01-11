@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/tsop/!svn/ver/53/VsMemoryLibrary/trunk/bin/com/tsop/games/memory
+END
+HighScore.class
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/tsop/!svn/ver/53/VsMemoryLibrary/trunk/bin/com/tsop/games/memory/HighScore.class
+END
+GameType.class
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/tsop/!svn/ver/53/VsMemoryLibrary/trunk/bin/com/tsop/games/memory/GameType.class
+END
+User.class
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/tsop/!svn/ver/53/VsMemoryLibrary/trunk/bin/com/tsop/games/memory/User.class
+END
+IGameBoardDisplay.class
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/tsop/!svn/ver/53/VsMemoryLibrary/trunk/bin/com/tsop/games/memory/IGameBoardDisplay.class
+END
+GameBoard.class
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/tsop/!svn/ver/53/VsMemoryLibrary/trunk/bin/com/tsop/games/memory/GameBoard.class
+END
+StatusMonitor.class
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/tsop/!svn/ver/53/VsMemoryLibrary/trunk/bin/com/tsop/games/memory/StatusMonitor.class
+END
+IShowGameboard.class
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/tsop/!svn/ver/53/VsMemoryLibrary/trunk/bin/com/tsop/games/memory/IShowGameboard.class
+END
+Player.class
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/tsop/!svn/ver/53/VsMemoryLibrary/trunk/bin/com/tsop/games/memory/Player.class
+END
+Match.class
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/tsop/!svn/ver/53/VsMemoryLibrary/trunk/bin/com/tsop/games/memory/Match.class
+END
+Computer.class
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/tsop/!svn/ver/53/VsMemoryLibrary/trunk/bin/com/tsop/games/memory/Computer.class
+END
+Utils.class
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/tsop/!svn/ver/53/VsMemoryLibrary/trunk/bin/com/tsop/games/memory/Utils.class
+END
+MemoryGame.class
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/tsop/!svn/ver/53/VsMemoryLibrary/trunk/bin/com/tsop/games/memory/MemoryGame.class
+END
+Position.class
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/tsop/!svn/ver/53/VsMemoryLibrary/trunk/bin/com/tsop/games/memory/Position.class
+END
+HighScoresDB.class
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/tsop/!svn/ver/53/VsMemoryLibrary/trunk/bin/com/tsop/games/memory/HighScoresDB.class
+END
+IShowMatchResult.class
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/tsop/!svn/ver/53/VsMemoryLibrary/trunk/bin/com/tsop/games/memory/IShowMatchResult.class
+END
+GameConstants.class
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/tsop/!svn/ver/53/VsMemoryLibrary/trunk/bin/com/tsop/games/memory/GameConstants.class
+END
+IShowHighScores.class
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/tsop/!svn/ver/53/VsMemoryLibrary/trunk/bin/com/tsop/games/memory/IShowHighScores.class
+END
+Card.class
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/tsop/!svn/ver/53/VsMemoryLibrary/trunk/bin/com/tsop/games/memory/Card.class
+END

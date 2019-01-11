@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, ShowGameboard!</string>
+    <string name="app_name">VsMemory</string>
+<string name="MENU_ITEM_EXIT">Exit</string>
+<string name="MENU_ITEM_START">Start</string>
+<string name="MENU_ITEM_SOUND_ON">Sound ON</string>
+<string name="MENU_ITEM_SOUND_OFF">Sound OFF</string>
+<string name="LABEL_PLAYER1">Player 1:</string>
+<string name="LABEL_PLAYER2">Player 2:</string>
+
+<string name="MENU_ITEM_ONE_PLAYER">One Player</string>
+<string name="MENU_ITEM_VS_COMPUTER">Player Vs Computer</string>
+<string name="MENU_ITEM_TWO_PLAYER">Two Player</string>
+<string name="MENU_ITEM_DIFFICULTY">Difficulty</string>
+<string name="MENU_ITEM_DIFFICULTY_1">1 (Easiest)</string>
+<string name="MENU_ITEM_DIFFICULTY_2">2</string>
+<string name="MENU_ITEM_DIFFICULTY_3">3 (Average)</string>
+<string name="MENU_ITEM_DIFFICULTY_4">4</string>
+<string name="MENU_ITEM_DIFFICULTY_5">5 (Hardest)</string>
+<color name="CurrentPlayerBack">#FFFACD</color>
+<color name="CurrentPlayerText">#000000</color>
+<color name="OtherPlayerBack">#0F1A4B</color>
+<color name="OtherPlayerText">#FFFFFF</color>
+<string name="HELP_TEXT">-Set the difficulty first when playing against the computer, otherwise the computer will have the default IQ.\n-To start the game select any card or press the start button to select different game options.\n-Once the game is started, each player selects two cards at a time.  If the cards match, that player goes again. If not it\'s the other player\'s turn.\n-Each successful match scores 4 points.  Each unsuccessful match subtracts one point.</string>
+<string name="CLOSE_BUTTON">Close</string>
+<string name="MENU_ITEM_HELP">Help</string>
+<string name="HELP_OK_BUTTON">OK</string>
+<string name="HELP_TITLE">Instructions</string>
+<string name="GAME_OVER_TITLE">Game Over!</string>
+<string name="GAME_OVER_OK">OK</string>
+<string name="PLAYER_1_SCORE">Player 1 Score: </string>
+<string name="PLAYER_2_SCORE">Player 2 Score:</string>
+<string name="PLAYER_1_WINS">Player 1 Wins!</string>
+<string name="PLAYER_2_WINS">Player 2 Wins!</string>
+<string name="TIE_GAME">Tie Game!</string>
+<string name="GOOD_GAME">Good Game!</string>
+<string name="BAD_GAME">Better luck next time!</string>
+<color name="BackgroundColor">#0F1A4B</color>
+<style name="LabelFont" parent="@android:style/TextAppearance.Medium">
+	<item name="android:layout_width">fill_parent</item>
+	<item name="android:typeface">sans</item>
+	<item name="android:textStyle">bold</item>
+	<item name="android:shadowColor">#00ccff</item>
+	<item name="android:shadowRadius">1.5</item>
+	<item name="android:shadowDx">1</item> 
+	<item name="android:shadowDy">1</item>
+</style>
+<string-array name="MATCH_TITLE_ARRAY"><item>This Is The Title For Match #1</item>
+<item>This Is The Title For Match #2</item>
+<item>This Is The Title For Match #3</item>
+</string-array>
+<string-array name="MATCH_DESCRIPTION_ARRAY"><item>This Is The Description for Match Item #1.  This can be a very long description with lots of informative text.  Maybe it will be 3 or 4 sentences long.</item>
+<item>This Is The Description for Match Item #2.  This can be a very long description with lots of informative text.  Maybe it will be 3 or 4 sentences long.</item>
+<item>This Is The Description for Match Item #3.  This can be a very long description with lots of informative text.  Maybe it will be 3 or 4 sentences long.</item>
+</string-array>
+<string name="IMAGES_ENABLED">false</string>
+</resources>

@@ -1,0 +1,144 @@
+Notes
+
+bugs
+D when only a few cards are left, it takes the computer a long time to figure out its moves
+D when game over, win sound is played repeatedly in a tight loop
+- in debug mode, soundPool encountered an error and all sounds stopped working
+	12-17 21:16:15.900: ERROR/AudioFlinger(31): no more track names availlable
+	12-17 21:16:15.909: ERROR/AudioTrack(218): AudioFlinger could not create track, status: -12
+	12-17 21:16:15.909: ERROR/SoundPool(218): Error creating AudioTrack
+D is difficulty setting working correctly?
+D when phone is turned sideways, game resets itself
+D game over popup not listing winner
+D game over popup not showing the very final score (add sleep?)
+D at end of 1 player game, application crashes
+D if a card is turned over too soon after pressing start, application crashes
+- Reported ArrayOutOfBounds Exception in MemoryGame.RecordMove()
+
+
+short term todo
+D improve thumbnail graphic
+D display a game over popup
+D create a help screen
+D persist preferences
+D scale application to screen size
+D test on different size screens with different APIs
+D if user selects a card without starting game, show start menu
+D indicate whose turn it is
+D add cards flipping animation
+D improve card back
+D do a better job of scaling the score labels
+D change the background color
+D add a start game sound
+D Implement the ability to randomly select a subset of a larger image collection
+X Implement "Clear Data" and "Move To SD Card" (cannot move if using copy protection)
+D Implement the large image display after a successful match occurs
+D Complete Refactoring of VsMemoryLibrary
+	D make sounds application specific (use reflection to separate from Library sound files)
+D Refactor VsMemory to use VsMemory Library
+	D make sure namespace remains the same
+	= test
+- VsMemory - Electric Guitars
+	D Create icon
+	D Create card images
+	D Create large images
+	= Create Promotional Images
+	D Create informational text strings
+	D make sure all references are updated
+	= Test on different screen sizes / OS's
+	= Disable Test Mode
+
+
+long term todo
+
+- Implement a Splash Screen
+- Refine timing of match sound versus flipping card and displaying popup - add a 1-cycle delay to the match dialog?
+- Keep track of High Score
+- Display a difficulty popup only after users selects a "vs computer" game
+- Allow for different sound themes for different game instances
+D How can I create only one game, but reference different graphics resources?
+- Implement an option for a smaller game board (4x6?)
+
+
+Calculated ImageView size on Samsung Vibrant is
+450W x 517H (Aspect Ratio 1.15)
+Let source image be 750x862
+With a frame size of 1250x1440
+
+Dialog Size Measured
+Screen				Dialog
+W		H			W		H
+240		320			225		285
+480		854			454		658
+
+Skin Ideas
+
+==Electric Guitars==
+1 Gibson Les Paul
+2 Gibson ES-335
+3 Gibson Explorer
+4 Gibson L-5CES
+5 Fender Stratocaster
+6 Fender Telecaster
+7 Gretsch Corvette
+8 Gretsch 6122-1959
+9 Gretsch 6122-1962
+10 Epiphone Casino
+11 Parker Fly
+12 Gibson Les Paul Jr
+13 Paul Reed Smith 25(?)
+14 Ibanez Artist
+15 Dean Dimebag Razorback
+16 ESP Truckster
+17 Gibson Flying V
+18 Fender Jazz Master
+19 Gibson Firebird X
+20 Gibson "The Log"
+21 Gretsch White Falcon
+22 Paul Reed Smith Dragon
+23 Vox Teardrop Mark VI
+24 Fender Jaguar
+25 Rickenbacker 360-12
+26 National Newport
+27 Jackson Rhodes
+28 Gibson SG
+29 Ibanez Steve Vai JEM
+30 Gibson EDS-1275
+31 Gretsch Duo Jet
+32 Mosrite Ventures
+33 Gibson Les Paul Black Beauty
+34 Fender Telecaster Thinline
+35 Westone Dimension IV
+36 Gibson CS-336
+
+
+
+
+
+==Bikinis==
+1 Triangle Top
+2 Underwire Top
+3 Halter Top
+4 French Bottom
+5 Brazilian Bottom
+6 Rio Bottom
+7 Thong Bottom
+8 G-String Bottom
+9 Boy Short Bottom
+10 Hot Short Bottom
+11 String Bottom
+12 One-piece
+13 Seekini Bottom
+14 Seekini Top
+15 Tankini Top
+16 Bandeau Top
+17 Slingshot 
+18 Monokini
+19 Teardrop
+20 Micro Top
+21 Micro Bottom
+22 Sports Bikini Bottom
+23 Hikini Bottom
+24 Skirted Thong Bottom
+
+

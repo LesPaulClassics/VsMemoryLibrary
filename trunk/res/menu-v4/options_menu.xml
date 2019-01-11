@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:title="@string/MENU_ITEM_DIFFICULTY" android:id="@+id/Difficulty">
+	<menu>
+		<item android:title="@string/MENU_ITEM_DIFFICULTY_1" android:id="@+id/Difficulty1" android:checkable="true" android:checked="false"></item>
+		<item android:title="@string/MENU_ITEM_DIFFICULTY_2" android:id="@+id/Difficulty2" android:checkable="true" android:checked="false"></item>
+		<item android:title="@string/MENU_ITEM_DIFFICULTY_3" android:id="@+id/Difficulty3" android:checkable="true" android:checked="true"></item>
+		<item android:title="@string/MENU_ITEM_DIFFICULTY_4" android:id="@+id/Difficulty4" android:checkable="true" android:checked="false"></item>
+		<item android:title="@string/MENU_ITEM_DIFFICULTY_5" android:id="@+id/Difficulty5" android:checkable="true" android:checked="false"></item>
+	</menu>
+</item>
+<item android:id="@+id/Start" android:title="@string/MENU_ITEM_START">
+	<menu>
+		<item android:id="@+id/StartOnePlayer" android:title="@string/MENU_ITEM_ONE_PLAYER"></item>
+		<item android:id="@+id/StartVsComputer" android:title="@string/MENU_ITEM_VS_COMPUTER"></item>
+		<item android:id="@+id/StartTwoPlayer" android:title="@string/MENU_ITEM_TWO_PLAYER"></item>
+	</menu>
+</item>
+<item android:id="@+id/Help" android:title="@string/MENU_ITEM_HELP"></item><item android:title="@string/MENU_ITEM_SOUND_OFF" android:id="@+id/Sound"></item>
+<item android:title="@string/MENU_ITEM_EXIT" android:id="@+id/Exit"></item>
+
+</menu>
